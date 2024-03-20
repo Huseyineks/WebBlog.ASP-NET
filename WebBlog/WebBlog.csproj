@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebBlog.BusinessLogicLayer\WebBlog.BusinessLogicLayer.csproj" />
+    <ProjectReference Include="..\WebBlog.DataAccesLayer\WebBlog.DataAccesLayer.csproj" />
+    <ProjectReference Include="..\WebBlog.Entitiy\WebBlog.Entitiy.csproj" />
+  </ItemGroup>
+
 </Project>
