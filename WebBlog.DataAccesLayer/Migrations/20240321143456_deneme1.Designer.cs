@@ -12,8 +12,8 @@ using WebBlog.DataAccesLayer.Data;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240320214320_sa")]
-    partial class sa
+    [Migration("20240321143456_deneme1")]
+    partial class deneme1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,24 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            createdAt = new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1719),
+                            email = "erhan",
+                            firstName = "sa",
+                            lastName = "Turker"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            createdAt = new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1728),
+                            email = "erhan",
+                            firstName = "as",
+                            lastName = "Turker"
+                        });
                 });
 
             modelBuilder.Entity("WebBlog.Entitiy.Entities.Article", b =>

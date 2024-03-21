@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace WebBlog.DataAccesLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class sa : Migration
+    public partial class deneme1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -77,6 +79,15 @@ namespace WebBlog.DataAccesLayer.Migrations
                         principalTable: "Articles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AppUsers",
+                columns: new[] { "id", "createdAt", "email", "first_name", "last_name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1719), "erhan", "sa", "Turker" },
+                    { 2, new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1728), "erhan", "as", "Turker" }
                 });
 
             migrationBuilder.CreateIndex(
