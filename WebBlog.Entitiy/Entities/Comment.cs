@@ -15,13 +15,13 @@ namespace WebBlog.Entitiy.Entities
         public DateTime createdAt { get; set; }
 
         public DateTime updatedAt { get; set; } = DateTime.Now;
-        public int userId { get; set; }
+        public int? userId { get; set; }
 
-        public int articleId { get; set; }
+        public int? articleId { get; set; }
 
-        public virtual AppUser User { get; set; }
+        public virtual AppUser? User { get; set; }
 
-        public virtual Article article { get; set; }
+        public virtual Article? article { get; set; }
 
         
 

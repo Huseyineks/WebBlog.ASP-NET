@@ -57,15 +57,15 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1719),
+                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6878),
                             email = "erhan",
                             firstName = "sa",
-                            lastName = "Turker"
+                            lastName = "Turker1231"
                         },
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1728),
+                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6888),
                             email = "erhan",
                             firstName = "as",
                             lastName = "Turker"
@@ -97,7 +97,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.Property<DateTime>("updatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -105,6 +105,35 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.HasIndex("userId");
 
                     b.ToTable("Articles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Description = "akjsdnkjasashkjd",
+                            Title = "sa123",
+                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9659),
+                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9653),
+                            userId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "akjsdnkjasashkjd",
+                            Title = "sa123",
+                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661),
+                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9660),
+                            userId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "akjsdnkjasashkjd",
+                            Title = "sa123",
+                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9662),
+                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661),
+                            userId = 2
+                        });
                 });
 
             modelBuilder.Entity("WebBlog.Entitiy.Entities.Comment", b =>
@@ -116,7 +145,7 @@ namespace WebBlog.DataAccesLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("articleId")
+                    b.Property<int?>("articleId")
                         .HasColumnType("int");
 
                     b.Property<string>("commmentDescription")
@@ -130,7 +159,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.Property<DateTime>("updatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -147,8 +176,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.HasOne("WebBlog.Entitiy.Entities.AppUser", "User")
                         .WithMany("Articles")
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
                 });
@@ -158,14 +186,12 @@ namespace WebBlog.DataAccesLayer.Migrations
                     b.HasOne("WebBlog.Entitiy.Entities.Article", "article")
                         .WithMany("Comments")
                         .HasForeignKey("articleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("WebBlog.Entitiy.Entities.AppUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
 

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebBlog.DataAccesLayer.Data;
+using WebBlog.Entitiy.Entities;
 using WebBlog.Models;
 
 namespace WebBlog.Controllers
@@ -8,13 +10,20 @@ namespace WebBlog.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext _db)
         {
+            _context = _db;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            AppUser user = _context.AppUsers.Find(1);
+            _context.AppUsers.Remove(user);
+            _context.SaveChanges();
+            
             return View();
         }
 

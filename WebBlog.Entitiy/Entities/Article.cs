@@ -18,9 +18,9 @@ namespace WebBlog.Entitiy.Entities
 
         public DateTime updatedAt { get; set; } = DateTime.Now;
 
-        public int userId { get; set; }
+        public int? userId { get; set; }
 
-        public virtual AppUser User { get; set; }
+        public virtual AppUser? User { get; set; }
 
         public virtual List<Comment>? Comments { get; set; }
 

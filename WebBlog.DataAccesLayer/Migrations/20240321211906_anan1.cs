@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class deneme1 : Migration
+    public partial class anan1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,7 +39,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    userId = table.Column<int>(type: "int", nullable: false)
+                    userId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,7 +49,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         column: x => x.userId,
                         principalTable: "AppUsers",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,8 +61,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                     comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    userId = table.Column<int>(type: "int", nullable: false),
-                    articleId = table.Column<int>(type: "int", nullable: false)
+                    userId = table.Column<int>(type: "int", nullable: true),
+                    articleId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,13 +72,13 @@ namespace WebBlog.DataAccesLayer.Migrations
                         column: x => x.userId,
                         principalTable: "AppUsers",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Comments_Articles_articleId",
                         column: x => x.articleId,
                         principalTable: "Articles",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.InsertData(
@@ -86,8 +86,18 @@ namespace WebBlog.DataAccesLayer.Migrations
                 columns: new[] { "id", "createdAt", "email", "first_name", "last_name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1719), "erhan", "sa", "Turker" },
-                    { 2, new DateTime(2024, 3, 21, 17, 34, 56, 624, DateTimeKind.Local).AddTicks(1728), "erhan", "as", "Turker" }
+                    { 1, new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6878), "erhan", "sa", "Turker1231" },
+                    { 2, new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6888), "erhan", "as", "Turker" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Articles",
+                columns: new[] { "id", "description", "title", "createdAt", "updatedAt", "userId" },
+                values: new object[,]
+                {
+                    { 2, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9659), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9653), 1 },
+                    { 3, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9660), 1 },
+                    { 4, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9662), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661), 2 }
                 });
 
             migrationBuilder.CreateIndex(
