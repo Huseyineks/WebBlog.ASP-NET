@@ -20,10 +20,8 @@ namespace WebBlog.Controllers
 
         public IActionResult Index()
         {
-            AppUser user = _context.AppUsers.Find(1);
-            _context.AppUsers.Remove(user);
-            _context.SaveChanges();
-            
+           
+
             return View();
         }
 

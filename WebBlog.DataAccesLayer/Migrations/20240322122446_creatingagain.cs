@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class anan1 : Migration
+    public partial class creatingagain : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     first_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     last_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -83,11 +84,11 @@ namespace WebBlog.DataAccesLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "AppUsers",
-                columns: new[] { "id", "createdAt", "email", "first_name", "last_name" },
+                columns: new[] { "id", "createdAt", "email", "first_name", "last_name", "password" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6878), "erhan", "sa", "Turker1231" },
-                    { 2, new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6888), "erhan", "as", "Turker" }
+                    { 1, new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4849), "erhan", "sa", "Turker1231", "serdar" },
+                    { 2, new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4860), "erhan", "as", "Turker", "serdar12312" }
                 });
 
             migrationBuilder.InsertData(
@@ -95,9 +96,9 @@ namespace WebBlog.DataAccesLayer.Migrations
                 columns: new[] { "id", "description", "title", "createdAt", "updatedAt", "userId" },
                 values: new object[,]
                 {
-                    { 2, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9659), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9653), 1 },
-                    { 3, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9660), 1 },
-                    { 4, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9662), new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661), 2 }
+                    { 2, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8014), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8009), 1 },
+                    { 3, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8016), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8015), 1 },
+                    { 4, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8018), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8017), 2 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,5 +1,9 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using WebBlog.BusinessLogicLayer.Concrete;
+using WebBlog.BusinessLogicLayer.Interface;
 using WebBlog.DataAccesLayer.Data;
+using WebBlog.Entitiy.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IValidator<RegisterationPost>, AppUserValidator>();
+
+builder.Services.AddScoped<IAppUser, AppUserRepository>();
+
+builder.Services.AddScoped<IArticle, ArticleRepository>();
+
+builder.Services.AddScoped<IComment, CommentRepository>();
+
+
+builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

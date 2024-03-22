@@ -1,0 +1,40 @@
+﻿@model RegisterationPost
+
+<div class="container p-5">
+
+<form method="post">
+    <div class="row">
+    <div class="form-group col-6 mb-2">
+        <label for="InputName">Name</label>
+        <input type="text" class="form-control" id="InputName" placeholder="Enter your name" asp-for="firstName">
+        
+        <span asp-validation-for="firstName" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6">
+        <label for="InputLastName">Last Name</label>
+        <input type="text" class="form-control" id="InputLastName" placeholder="Enter your last name" asp-for="lastName">
+                <span asp-validation-for="lastName" class="text-danger"></span>
+    </div>
+        
+    
+        <div class="form-group col-6 mb-2">
+            <label for="InputPassword">Password</label>
+            <input type="password" class="form-control" id="InputPassword" placeholder="Enter password" asp-for="password">
+                <span asp-validation-for="password" class="text-danger"></span>
+        </div>
+        <div class="form-group col-6">
+            <label for="ConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" asp-for="confirmPassword">
+            
+        </div>
+            <div class="form-group col-12 mb-2">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" placeholder="Enter email" asp-for="email">
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>

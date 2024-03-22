@@ -20,11 +20,11 @@ namespace WebBlog.DataAccesLayer.Data
 
               
               
-               new AppUser { Id = 1, firstName = "sa", lastName = "Turker1231", createdAt = DateTime.Now, email = "erhan" },
+               new AppUser { Id = 1, firstName = "sa", lastName = "Turker1231", createdAt = DateTime.Now, email = "erhan",password = "serdar" },
 
                
 
-                new AppUser {Id = 2,firstName = "as", lastName = "Turker", createdAt = DateTime.Now , email = "erhan" }
+                new AppUser {Id = 2,firstName = "as", lastName = "Turker", createdAt = DateTime.Now , email = "erhan", password = "serdar12312" }
 
                 );
 
@@ -35,6 +35,7 @@ namespace WebBlog.DataAccesLayer.Data
                 entity.Property(i => i.email).HasColumnName("email");
                 entity.Property(i => i.firstName).HasColumnName("first_name");
                 entity.Property(i => i.lastName).HasColumnName("last_name");
+                entity.Property(i => i.password).HasColumnName("password");
             });
             modelBuilder.Entity<Article>(entity =>
             {

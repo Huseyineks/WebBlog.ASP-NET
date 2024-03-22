@@ -12,8 +12,8 @@ using WebBlog.DataAccesLayer.Data;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240321211906_anan1")]
-    partial class anan1
+    [Migration("20240322122446_creatingagain")]
+    partial class creatingagain
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,11 @@ namespace WebBlog.DataAccesLayer.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("last_name");
 
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("password");
+
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
@@ -60,18 +65,20 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6878),
+                            createdAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4849),
                             email = "erhan",
                             firstName = "sa",
-                            lastName = "Turker1231"
+                            lastName = "Turker1231",
+                            password = "serdar"
                         },
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(6888),
+                            createdAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4860),
                             email = "erhan",
                             firstName = "as",
-                            lastName = "Turker"
+                            lastName = "Turker",
+                            password = "serdar12312"
                         });
                 });
 
@@ -115,8 +122,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 2,
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9659),
-                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9653),
+                            createdAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8014),
+                            updatedAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8009),
                             userId = 1
                         },
                         new
@@ -124,8 +131,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 3,
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661),
-                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9660),
+                            createdAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8016),
+                            updatedAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8015),
                             userId = 1
                         },
                         new
@@ -133,8 +140,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 4,
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9662),
-                            updatedAt = new DateTime(2024, 3, 22, 0, 19, 5, 892, DateTimeKind.Local).AddTicks(9661),
+                            createdAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8018),
+                            updatedAt = new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8017),
                             userId = 2
                         });
                 });
