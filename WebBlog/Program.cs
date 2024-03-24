@@ -1,4 +1,7 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using WebBlog.BusinessLogicLayer.Concrete;
 using WebBlog.BusinessLogicLayer.Interface;
@@ -12,7 +15,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IValidator<RegisterationPost>, AppUserValidator>();
+builder.Services.AddScoped<IValidator<RegisterationPost>, RegisterUserValidator>();
+
+builder.Services.AddScoped<IValidator<AppUser>,LoginUserValidator>();
 
 builder.Services.AddScoped<IAppUser, AppUserRepository>();
 
@@ -20,6 +25,18 @@ builder.Services.AddScoped<IArticle, ArticleRepository>();
 
 builder.Services.AddScoped<IComment, CommentRepository>();
 
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme).
+    AddCookie(x =>
+    {
+        x.LoginPath = "/Blog/Login";
+    });
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
 
 builder.Services.AddControllersWithViews();
 

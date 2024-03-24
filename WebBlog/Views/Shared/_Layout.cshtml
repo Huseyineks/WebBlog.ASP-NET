@@ -29,18 +29,30 @@
                
                 </ul>
                 <div class="d-flex">
-                    <button class="btn btn-secondary me-sm-2">
 
-                        <a class="nav-link text-dark"  asp-controller="Blog" asp-action="Login">
-                            Login
-                        </a>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <button class="btn btn-secondary me-sm-2">
 
-                    </button>
+                            <a class="nav-link text-dark"  asp-controller="Blog" asp-action="Login">
+                                Login
+                            </a>
+
+                        </button>
+                        <button class="btn btn-secondary me-sm-2">
+                            <a class="nav-link text-dark"  asp-controller="Blog" asp-action="Register">
+                                Register
+                            </a>
+                        </button>
+                    }
+                    @if (User.Identity.IsAuthenticated){
                     <button class="btn btn-secondary my-2 my-sm-0">
-                        <a class="nav-link text-dark"  asp-controller="Blog" asp-action="Register">
-                            Register
+                        <a class="nav-link text-dark" asp-controller="Blog" asp-action="LogOut">
+                            Logout
                         </a>
                     </button>
+                    }
+
                 </div>
             </div>
         </div>
