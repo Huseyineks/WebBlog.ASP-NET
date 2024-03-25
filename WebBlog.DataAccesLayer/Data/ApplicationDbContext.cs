@@ -61,11 +61,11 @@ namespace WebBlog.DataAccesLayer.Data
 
                
 
-                new Article {Id =2, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now },
+                new Article {Id =2, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now,Author = "erhan" },
 
-                new Article {Id = 3, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now },
+                new Article {Id = 3, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan" },
 
-                 new Article { Id = 4, userId = 2, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now }
+                 new Article { Id = 4, userId = 2, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan" }
 
                 );
         }

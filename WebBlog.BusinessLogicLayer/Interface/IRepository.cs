@@ -21,8 +21,6 @@ namespace WebBlog.BusinessLogicLayer.Interface
 
         void AddRange(IEnumerable<T> items);
 
-
-
-
+        IQueryable<T> GetClassifiedList(Expression<Func<T, bool>> filter);
     }
 }

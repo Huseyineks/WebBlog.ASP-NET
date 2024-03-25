@@ -67,7 +67,10 @@ namespace WebBlog.Controllers
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, postUser.firstName)
+                    new Claim(ClaimTypes.NameIdentifier,newUser.Id.ToString()),
+                    new Claim(ClaimTypes.Name, newUser.firstName + ' ' + newUser.lastName),
+                    new Claim(ClaimTypes.Email,newUser.email),
+                    new Claim(ClaimTypes.DateOfBirth,newUser.createdAt.ToString())
 
 
                 };
@@ -118,9 +121,12 @@ namespace WebBlog.Controllers
            
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, currentUser.firstName)
+                    new Claim(ClaimTypes.NameIdentifier, currentUser.Id.ToString()),
+                    new Claim(ClaimTypes.Name, currentUser.firstName + ' ' + currentUser.lastName),
+                    new Claim(ClaimTypes.Email,currentUser.email),
+                    new Claim(ClaimTypes.DateOfBirth,currentUser.createdAt.ToString())
 
-
+                    
                 };
 
                 var userIdentity = new ClaimsIdentity(claims,"Login");

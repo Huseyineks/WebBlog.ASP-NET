@@ -26,6 +26,7 @@ namespace WebBlog.BusinessLogicLayer.Concrete
 
         public void Update(Article article)
         {
+            
             _db.Articles.Update(article);
         }
     }

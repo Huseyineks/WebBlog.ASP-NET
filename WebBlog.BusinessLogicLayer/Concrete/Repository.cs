@@ -42,13 +42,21 @@ namespace WebBlog.BusinessLogicLayer.Concrete
             
             IQueryable<T> query = dbSet.Where(filter);
 
-
-
-            return query.FirstOrDefault();
-
-          
+            
+                return query.FirstOrDefault();
+            
+   
 
             
+        }
+        public IQueryable<T> GetClassifiedList(Expression<Func<T, bool>> filter)
+        {
+
+            IQueryable<T> query = dbSet.Where(filter);
+
+
+            return query;
+
         }
 
         public void Remove(T item)

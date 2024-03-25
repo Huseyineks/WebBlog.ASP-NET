@@ -1,0 +1,37 @@
+﻿@model List<Article>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">AUTHOR</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">CREATED_DATE</th>
+            <th scope="col">EDİT</th>
+            <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-active">
+                <td>@item.Author</td>
+                <td>@item.Title</td>
+                <td><a class="nav-item" asp-controller="Article" asp-action="Details" asp-route-id="@item.Id">Click</a></td>
+                <td>@item.createdAt</td>
+                <td>
+                    <button class="btn btn-warning">
+                    <a class="nav-link" asp-controller="Article" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </button>
+                </td>
+                <td><button class="btn btn-danger">
+                        <a class="nav-link" asp-controller="Article" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </button></td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
