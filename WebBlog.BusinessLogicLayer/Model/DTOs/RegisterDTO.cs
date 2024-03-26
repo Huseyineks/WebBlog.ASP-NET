@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebBlog.Entitiy.Entities
+namespace WebBlog.BusinessLogicLayer.Model.DTOs
 {
-    public class RegisterationPost
+    public class RegisterDTO
     {
         public string firstName { get; set; }
 

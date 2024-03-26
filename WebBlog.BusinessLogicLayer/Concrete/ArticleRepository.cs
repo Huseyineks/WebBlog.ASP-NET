@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WebBlog.BusinessLogicLayer.Interface;
@@ -28,6 +30,15 @@ namespace WebBlog.BusinessLogicLayer.Concrete
         {
             
             _db.Articles.Update(article);
+        }
+
+        public Article getComments(int? id) {
+
+            Article article = _db.Articles.Include(i => i.Comments).Where(i => i.Id == id).FirstOrDefault();
+
+            return article;
+        
+        
         }
     }
 }

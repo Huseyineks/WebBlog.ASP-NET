@@ -12,6 +12,7 @@ namespace WebBlog.Entitiy.Entities
 
         public string commmentDescription { get; set; }
 
+        public string commentAuthor { get; set; }
         public DateTime createdAt { get; set; }
 
         public DateTime updatedAt { get; set; } = DateTime.Now;

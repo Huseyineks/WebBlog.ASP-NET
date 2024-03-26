@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using WebBlog.BusinessLogicLayer.Concrete;
 using WebBlog.BusinessLogicLayer.Interface;
+using WebBlog.BusinessLogicLayer.Model.DTOs;
 using WebBlog.DataAccesLayer.Data;
 using WebBlog.Entitiy.Entities;
 
@@ -15,9 +16,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IValidator<RegisterationPost>, RegisterUserValidator>();
+builder.Services.AddScoped<IValidator<RegisterDTO>, RegisterUserValidator>();
 
-builder.Services.AddScoped<IValidator<AppUser>,LoginUserValidator>();
+builder.Services.AddScoped<IValidator<AppUserDTO>,LoginUserValidator>();
 
 builder.Services.AddScoped<IAppUser, AppUserRepository>();
 

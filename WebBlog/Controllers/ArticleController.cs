@@ -10,11 +10,12 @@ namespace WebBlog.Controllers
     public class ArticleController : Controller
     {
         IArticle _article;
-        
+        IComment _comment;
 
-        public ArticleController(IArticle article) { 
+        public ArticleController(IArticle article,IComment comment) { 
         
         _article = article;
+        _comment = comment;
         
 
         }
@@ -79,12 +80,58 @@ namespace WebBlog.Controllers
         }
         public IActionResult Details(int ?id) {
 
-            Article article = _article.Get(i => i.Id == id);
+            Article article = _article.getComments(id);
 
 
-            return View(article);
+
+            DetailsDTO detailsdto = new DetailsDTO()
+            {
+                Article = article,
+
+                comment = null
+            };
+            
+                
+
+
+
+
+            return View(detailsdto);
         
         }
+
+        [HttpPost]
+
+        public IActionResult Details(DetailsDTO postedComment)
+        {
+
+            var Author = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+
+            int ?id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value.ToInt();
+
+          
+
+            Comment comment = new Comment()
+            {
+                
+                commentAuthor = Author,
+                commmentDescription = postedComment.comment.commmentDescription,
+                articleId = postedComment.Article.Id,
+                userId = id,
+                createdAt = DateTime.Now
+
+
+            };
+
+            _comment.Add(comment);
+            _comment.Save();
+
+            return RedirectToAction("Index","Home");
+
+
+        }
+
+       
 
         public IActionResult Edit(int? id)
         {

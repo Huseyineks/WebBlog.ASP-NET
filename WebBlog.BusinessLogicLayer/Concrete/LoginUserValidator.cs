@@ -8,12 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WebBlog.BusinessLogicLayer.Interface;
+using WebBlog.BusinessLogicLayer.Model.DTOs;
 using WebBlog.Entitiy.Entities;
 
 namespace WebBlog.BusinessLogicLayer.Concrete
 {
 
-    public class LoginUserValidator : AbstractValidator<AppUser>
+    public class LoginUserValidator : AbstractValidator<AppUserDTO>
     {
         IAppUser _user;
         public LoginUserValidator(IAppUser user)
@@ -28,7 +29,7 @@ namespace WebBlog.BusinessLogicLayer.Concrete
 
 
 
-        private void BeValidUser(string firstName, string lastName, string password, ValidationContext<AppUser> context)
+        private void BeValidUser(string firstName, string lastName, string password, ValidationContext<AppUserDTO> context)
         {
 
             var User = _user.Get(i => i.password == password);

@@ -7,19 +7,20 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using WebBlog.BusinessLogicLayer.Interface;
+using WebBlog.BusinessLogicLayer.Model.DTOs;
 using WebBlog.Entitiy.Entities;
 
 namespace WebBlog.Controllers
 {
     public class BlogController : Controller
     {
-        IValidator<RegisterationPost> _validator;
+        IValidator<RegisterDTO> _validator;
         IAppUser _appUser;
         IArticle _article;
         IComment _comment;
-        IValidator<AppUser> _validatorL;
+        IValidator<AppUserDTO> _validatorL;
 
-        public BlogController(IValidator<RegisterationPost> validator, IArticle article, IComment comment,IAppUser appUser, IValidator<AppUser> validatorL)
+        public BlogController(IValidator<RegisterDTO> validator, IArticle article, IComment comment,IAppUser appUser, IValidator<AppUserDTO> validatorL)
         {
             _validator = validator;
             _article = article;
@@ -38,7 +39,7 @@ namespace WebBlog.Controllers
         [AllowAnonymous]
         [HttpPost]
         
-        public async Task<IActionResult> Register(RegisterationPost postUser) {
+        public async Task<IActionResult> Register(RegisterDTO postUser) {
 
             var result = _validator.Validate(postUser);
             foreach (var error in result.Errors)
@@ -100,7 +101,7 @@ namespace WebBlog.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login(AppUser currentUser)
+        public async Task<IActionResult> Login(AppUserDTO currentUser)
         {
 
             var result = _validatorL.Validate(currentUser);
@@ -117,15 +118,16 @@ namespace WebBlog.Controllers
 
             }
 
+            AppUser user = _appUser.Get(i => i.password == currentUser.password);
+
             
            
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, currentUser.Id.ToString()),
-                    new Claim(ClaimTypes.Name, currentUser.firstName + ' ' + currentUser.lastName),
-                    new Claim(ClaimTypes.Email,currentUser.email),
-                    new Claim(ClaimTypes.DateOfBirth,currentUser.createdAt.ToString())
-
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.firstName + ' ' + user.lastName),
+                    new Claim(ClaimTypes.Email,user.email),
+                    new Claim(ClaimTypes.DateOfBirth,user.createdAt.ToString())
                     
                 };
 

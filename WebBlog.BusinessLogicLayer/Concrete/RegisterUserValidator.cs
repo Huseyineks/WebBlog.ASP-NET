@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebBlog.BusinessLogicLayer.Interface;
+using WebBlog.BusinessLogicLayer.Model.DTOs;
 using WebBlog.Entitiy.Entities;
 
 namespace WebBlog.BusinessLogicLayer.Concrete
 {
    
-        public class RegisterUserValidator : AbstractValidator<RegisterationPost>
+        public class RegisterUserValidator : AbstractValidator<RegisterDTO>
         {
             IAppUser _appUser;
             public RegisterUserValidator(IAppUser user)

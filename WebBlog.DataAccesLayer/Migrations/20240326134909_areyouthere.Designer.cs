@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebBlog.DataAccesLayer.Data;
 
@@ -11,9 +12,11 @@ using WebBlog.DataAccesLayer.Data;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240326134909_areyouthere")]
+    partial class areyouthere
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +64,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(5924),
+                            createdAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(1679),
                             email = "erhan",
                             firstName = "sa",
                             lastName = "Turker1231",
@@ -70,7 +73,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(5935),
+                            createdAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(1690),
                             email = "erhan",
                             firstName = "as",
                             lastName = "Turker",
@@ -123,8 +126,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8701),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8696),
+                            createdAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4632),
+                            updatedAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4627),
                             userId = 1
                         },
                         new
@@ -133,8 +136,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8703),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8702),
+                            createdAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4635),
+                            updatedAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4633),
                             userId = 1
                         },
                         new
@@ -143,8 +146,8 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8705),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8704),
+                            createdAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4636),
+                            updatedAt = new DateTime(2024, 3, 26, 16, 49, 9, 422, DateTimeKind.Local).AddTicks(4635),
                             userId = 2
                         });
                 });
