@@ -61,7 +61,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(5924),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 122, DateTimeKind.Local).AddTicks(9042),
                             email = "erhan",
                             firstName = "sa",
                             lastName = "Turker1231",
@@ -70,7 +70,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(5935),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 122, DateTimeKind.Local).AddTicks(9054),
                             email = "erhan",
                             firstName = "as",
                             lastName = "Turker",
@@ -95,6 +95,9 @@ namespace WebBlog.DataAccesLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -122,9 +125,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 2,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8701),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8696),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1903),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1898),
                             userId = 1
                         },
                         new
@@ -132,9 +136,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 3,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "as",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8703),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8702),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1906),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1905),
                             userId = 1
                         },
                         new
@@ -142,9 +147,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 4,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8705),
-                            updatedAt = new DateTime(2024, 3, 26, 19, 15, 50, 590, DateTimeKind.Local).AddTicks(8704),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1908),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1907),
                             userId = 2
                         });
                 });

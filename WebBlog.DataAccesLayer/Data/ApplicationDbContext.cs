@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace WebBlog.DataAccesLayer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AppUser>().HasData(
 
               
@@ -61,11 +62,11 @@ namespace WebBlog.DataAccesLayer.Data
 
                
 
-                new Article {Id =2, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now,Author = "erhan" },
+                new Article {Id =2, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now,Author = "erhan",Image = "sa" },
 
-                new Article {Id = 3, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan" },
+                new Article {Id = 3, userId = 1, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan", Image = "as" },
 
-                 new Article { Id = 4, userId = 2, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan" }
+                 new Article { Id = 4, userId = 2, Title = "sa123", Description = "akjsdnkjasashkjd", createdAt = DateTime.Now, Author = "erhan", Image = "sa" }
 
                 );
         }

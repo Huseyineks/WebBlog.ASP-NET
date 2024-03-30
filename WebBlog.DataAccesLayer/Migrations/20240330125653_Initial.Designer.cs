@@ -12,8 +12,8 @@ using WebBlog.DataAccesLayer.Data;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240325160941_addingacolumn")]
-    partial class addingacolumn
+    [Migration("20240330125653_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(4215),
+                            createdAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(3057),
                             email = "erhan",
                             firstName = "sa",
                             lastName = "Turker1231",
@@ -73,7 +73,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(4225),
+                            createdAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(3068),
                             email = "erhan",
                             firstName = "as",
                             lastName = "Turker",
@@ -98,6 +98,9 @@ namespace WebBlog.DataAccesLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -125,9 +128,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 2,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7779),
-                            updatedAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7772),
+                            createdAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6288),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6280),
                             userId = 1
                         },
                         new
@@ -135,9 +139,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 3,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "as",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7782),
-                            updatedAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7781),
+                            createdAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6290),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6289),
                             userId = 1
                         },
                         new
@@ -145,9 +150,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                             Id = 4,
                             Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7784),
-                            updatedAt = new DateTime(2024, 3, 25, 19, 9, 40, 609, DateTimeKind.Local).AddTicks(7783),
+                            createdAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6292),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6291),
                             userId = 2
                         });
                 });
@@ -163,6 +169,10 @@ namespace WebBlog.DataAccesLayer.Migrations
 
                     b.Property<int?>("articleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("commentAuthor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("commmentDescription")
                         .IsRequired()

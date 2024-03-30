@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using WebBlog.BusinessLogicLayer.Concrete;
 using WebBlog.BusinessLogicLayer.Interface;
 using WebBlog.BusinessLogicLayer.Model.DTOs;
@@ -32,6 +33,8 @@ builder.Services.AddAuthentication(
     {
         x.LoginPath = "/Blog/Login";
     });
+
+
 builder.Services.AddMvc(config =>
 {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -56,7 +59,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

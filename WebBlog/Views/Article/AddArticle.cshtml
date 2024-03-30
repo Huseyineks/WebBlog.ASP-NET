@@ -6,18 +6,24 @@
 
 <div class="container">
     <h1>Add Article</h1>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     
 
         <div class="form-group">
             <label for="Title">Title</label>
             <input type="text" class="form-control" id="Title" asp-for="Title">
-
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
     <div class="form-group">
         <label for="textarea">Description</label>
         <textarea class="form-control" id="textarea" rows="5" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
     </div>
+        <div class="form-group col-3">
+            <label for="Image">Image</label>
+            <input class="form-control" id="Image" asp-for="Image">
+
+        </div>
         <button type="submit" class="btn btn-primary">Add</button>
     
    

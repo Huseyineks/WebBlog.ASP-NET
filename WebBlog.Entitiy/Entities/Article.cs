@@ -15,6 +15,8 @@ namespace WebBlog.Entitiy.Entities
     
         public string Description { get; set; }
 
+        public string? Image { get; set; }
+
         public DateTime createdAt { get; set; }
 
         public DateTime updatedAt { get; set; } = DateTime.Now;

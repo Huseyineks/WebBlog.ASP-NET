@@ -19,6 +19,9 @@ namespace WebBlog.Controllers
         IArticle _article;
         IComment _comment;
         IValidator<AppUserDTO> _validatorL;
+        
+        
+        
 
         public BlogController(IValidator<RegisterDTO> validator, IArticle article, IComment comment,IAppUser appUser, IValidator<AppUserDTO> validatorL)
         {
@@ -27,6 +30,7 @@ namespace WebBlog.Controllers
             _comment = comment;
             _appUser = appUser;
             _validatorL = validatorL;
+            
         }
 
         [AllowAnonymous]
@@ -54,6 +58,8 @@ namespace WebBlog.Controllers
             }
             else
             {
+
+
                 AppUser newUser = new AppUser()
                 {
                     firstName = postUser.firstName,

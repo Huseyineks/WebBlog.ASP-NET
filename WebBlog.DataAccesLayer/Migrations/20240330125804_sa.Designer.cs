@@ -12,8 +12,8 @@ using WebBlog.DataAccesLayer.Data;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240324154419_quickmigration")]
-    partial class quickmigration
+    [Migration("20240330125804_sa")]
+    partial class sa
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 1,
-                            createdAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(3509),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 122, DateTimeKind.Local).AddTicks(9042),
                             email = "erhan",
                             firstName = "sa",
                             lastName = "Turker1231",
@@ -73,7 +73,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 2,
-                            createdAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(3520),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 122, DateTimeKind.Local).AddTicks(9054),
                             email = "erhan",
                             firstName = "as",
                             lastName = "Turker",
@@ -90,10 +90,17 @@ namespace WebBlog.DataAccesLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -119,28 +126,34 @@ namespace WebBlog.DataAccesLayer.Migrations
                         new
                         {
                             Id = 2,
+                            Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6569),
-                            updatedAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6564),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1903),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1898),
                             userId = 1
                         },
                         new
                         {
                             Id = 3,
+                            Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "as",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6572),
-                            updatedAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6571),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1906),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1905),
                             userId = 1
                         },
                         new
                         {
                             Id = 4,
+                            Author = "erhan",
                             Description = "akjsdnkjasashkjd",
+                            Image = "sa",
                             Title = "sa123",
-                            createdAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6574),
-                            updatedAt = new DateTime(2024, 3, 24, 18, 44, 19, 109, DateTimeKind.Local).AddTicks(6573),
+                            createdAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1908),
+                            updatedAt = new DateTime(2024, 3, 30, 15, 58, 4, 123, DateTimeKind.Local).AddTicks(1907),
                             userId = 2
                         });
                 });
@@ -156,6 +169,10 @@ namespace WebBlog.DataAccesLayer.Migrations
 
                     b.Property<int?>("articleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("commentAuthor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("commmentDescription")
                         .IsRequired()

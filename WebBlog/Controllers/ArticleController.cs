@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using ServiceStack;
 using System.Security.Claims;
 using WebBlog.BusinessLogicLayer.Interface;
@@ -11,11 +13,13 @@ namespace WebBlog.Controllers
     {
         IArticle _article;
         IComment _comment;
-
-        public ArticleController(IArticle article,IComment comment) { 
+        IWebHostEnvironment _webHostEnvironment;
+        
+        public ArticleController(IArticle article,IComment comment,IWebHostEnvironment webHostEnvironment) { 
         
         _article = article;
         _comment = comment;
+        _webHostEnvironment = webHostEnvironment;
         
 
         }
@@ -57,26 +61,53 @@ namespace WebBlog.Controllers
         [HttpPost]
         public IActionResult AddArticle(ArticleDTO article)
         {
+            string fileName = UploadFile(article);
             string FullName = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value.ToString();
-            _article.Add(
-                
-                new Article()
-                {
-                    Id = article.ID,
-                    Author = FullName,
-                    Title = article.Title,
-                    Description = article.Description,
-                    createdAt = DateTime.Now,
-                    userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value.ToInt()
-        }
-                
-                
-                );
-            _article.Save();
+
+            if (ModelState.IsValid)
+            {
+                _article.Add(
+
+                    new Article()
+                    {
+                        Id = article.ID,
+                        Author = FullName,
+                        Title = article.Title,
+                        Description = article.Description,
+                        Image = fileName,
+                        createdAt = DateTime.Now,
+                        userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value.ToInt()
+                    }
 
 
+                    );
+                _article.Save();
+
+            }
+            else
+            {
+                return View();
+            }
 
             return RedirectToAction("Index","Home");
+        }
+
+        private string UploadFile(ArticleDTO article)
+        {
+            string? fileName = null;
+
+            if (article.Image != null)
+            {
+                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+                fileName = Guid.NewGuid().ToString() + '-' + article.Image.FileName;
+                string filePath = Path.Combine(uploadDir, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    article.Image.CopyTo(fileStream);
+                }
+            }
+            return fileName;
         }
         public IActionResult Details(int ?id) {
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebBlog.DataAccesLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class creatingagain : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     first_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     last_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -36,8 +36,10 @@ namespace WebBlog.DataAccesLayer.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     userId = table.Column<int>(type: "int", nullable: true)
@@ -60,6 +62,7 @@ namespace WebBlog.DataAccesLayer.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    commentAuthor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     userId = table.Column<int>(type: "int", nullable: true),
@@ -87,18 +90,18 @@ namespace WebBlog.DataAccesLayer.Migrations
                 columns: new[] { "id", "createdAt", "email", "first_name", "last_name", "password" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4849), "erhan", "sa", "Turker1231", "serdar" },
-                    { 2, new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(4860), "erhan", "as", "Turker", "serdar12312" }
+                    { 1, new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(3057), "erhan", "sa", "Turker1231", "serdar" },
+                    { 2, new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(3068), "erhan", "as", "Turker", "serdar12312" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "id", "description", "title", "createdAt", "updatedAt", "userId" },
+                columns: new[] { "id", "Author", "description", "Image", "title", "createdAt", "updatedAt", "userId" },
                 values: new object[,]
                 {
-                    { 2, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8014), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8009), 1 },
-                    { 3, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8016), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8015), 1 },
-                    { 4, "akjsdnkjasashkjd", "sa123", new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8018), new DateTime(2024, 3, 22, 15, 24, 45, 683, DateTimeKind.Local).AddTicks(8017), 2 }
+                    { 2, "erhan", "akjsdnkjasashkjd", "sa", "sa123", new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6288), new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6280), 1 },
+                    { 3, "erhan", "akjsdnkjasashkjd", "as", "sa123", new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6290), new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6289), 1 },
+                    { 4, "erhan", "akjsdnkjasashkjd", "sa", "sa123", new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6292), new DateTime(2024, 3, 30, 15, 56, 52, 999, DateTimeKind.Local).AddTicks(6291), 2 }
                 });
 
             migrationBuilder.CreateIndex(
